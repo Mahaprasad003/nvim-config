@@ -1,0 +1,17 @@
+# .gitignore
+
+# Mac/Linux system files
+.DS_Store
+
+# Lazy.nvim lockfile? NO! Keep lazy-lock.json!
+# It ensures you get the exact same plugin versions on other machines.
+
+# User specific data (if any)
+plugin/
+*.log
+
+# Persistent undo history (if you enabled it)
+undo/
+
+# Session files
+session/
