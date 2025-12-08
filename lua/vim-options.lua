@@ -26,6 +26,15 @@ vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", { desc = "Increase Wid
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Copy to system clipboard using <leader>y
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Copy to system clipboard" })
+
+-- Paste from system clipboard using <leader>p
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")

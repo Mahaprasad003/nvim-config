@@ -22,6 +22,7 @@ return {
           telescope = true,    -- Styles the search window
           mason = true,        -- Styles the installer window
           dashboard = true,    -- Styles your start screen
+          which_key = true,
           
           -- Fixes the file explorer look
           neotree = true,
