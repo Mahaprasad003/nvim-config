@@ -17,7 +17,21 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to Bottom Window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to Top Window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to Right Window" })
 
--- 2. Resizing: Resize splits with Arrow keys
+-- 2. Splits / panes
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
+vim.keymap.set("n", "<leader>ss", "<cmd>split<CR>", { desc = "Horizontal Split" })
+vim.keymap.set("n", "<leader>sf", function()
+  vim.cmd("vsplit")
+  require("telescope.builtin").find_files()
+end, { desc = "Find File in Vertical Split" })
+vim.keymap.set("n", "<leader>sF", function()
+  vim.cmd("split")
+  require("telescope.builtin").find_files()
+end, { desc = "Find File in Horizontal Split" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize Splits" })
+vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split" })
+
+-- 3. Resizing: Resize splits with Arrow keys
 vim.keymap.set("n", "<Up>", ":resize +2<CR>", { desc = "Increase Height" })
 vim.keymap.set("n", "<Down>", ":resize -2<CR>", { desc = "Decrease Height" })
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", { desc = "Decrease Width" })

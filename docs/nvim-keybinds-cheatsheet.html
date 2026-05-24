@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neovim Keybinds Cheatsheet</title>
+<style>
+  @font-face { font-family: "Newsreader"; src: url("/home/mp/.hermes/skills/content/kami/assets/fonts/Newsreader.woff2") format("woff2"); font-weight: 400 500; font-style: normal; }
+  @font-face { font-family: "Inter"; src: url("/home/mp/.hermes/skills/content/kami/assets/fonts/Inter.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Inter"; src: url("/home/mp/.hermes/skills/content/kami/assets/fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "Inter"; src: url("/home/mp/.hermes/skills/content/kami/assets/fonts/Inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+  @font-face { font-family: "JetBrains Mono"; src: url("/home/mp/.hermes/skills/content/kami/assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 400 500; font-style: normal; }
+
+  @page {
+    size: A4 landscape;
+    margin: 8mm 10mm;
+    background: #f5f4ed;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment: #f5f4ed;
+    --ivory: #faf9f5;
+    --sand: #e8e6dc;
+    --near-black: #141413;
+    --dark-warm: #3d3d3a;
+    --olive: #5e5d59;
+    --stone: #87867f;
+    --brand: #1B365D;
+    --brand-light: #2D5A8A;
+    --border: #e8e6dc;
+    --border-soft: #e5e3d8;
+    --tag-bg: #EEF2F7;
+    --serif: "Newsreader", "Source Serif 4", Charter, Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  }
+
+  html, body { background: var(--parchment); }
+
+  body {
+    font-family: var(--serif);
+    color: var(--near-black);
+    font-size: 7.6pt;
+    line-height: 1.25;
+  }
+
+  .page { width: 100%; }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18pt;
+    align-items: end;
+    border-left: 3pt solid var(--brand);
+    padding-left: 9pt;
+    margin-bottom: 6pt;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 7pt;
+    font-weight: 600;
+    color: var(--brand);
+    letter-spacing: 1.1pt;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 20pt;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.35pt;
+    color: var(--near-black);
+  }
+
+  .subtitle {
+    margin-top: 2pt;
+    color: var(--olive);
+    font-size: 9.4pt;
+    line-height: 1.35;
+  }
+
+  .meta {
+    text-align: right;
+    font-family: var(--sans);
+    font-size: 7pt;
+    color: var(--stone);
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+
+  .legend {
+    display: flex;
+    gap: 14pt;
+    padding: 3pt 0 5pt;
+    margin-bottom: 6pt;
+    border-bottom: 0.4pt dotted var(--border);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: baseline;
+    gap: 4pt;
+    color: var(--olive);
+    font-size: 7.5pt;
+  }
+
+  .key {
+    font-family: var(--mono);
+    font-size: 6.8pt;
+    color: var(--brand);
+    background: var(--tag-bg);
+    border-radius: 3pt;
+    padding: 0.9pt 3.8pt 1.1pt;
+    white-space: nowrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5pt;
+    align-items: start;
+  }
+
+  .card {
+    background: var(--ivory);
+    border: 0.5pt solid var(--border);
+    border-radius: 8pt;
+    padding: 5pt 6pt;
+    break-inside: avoid;
+  }
+
+  .span-2 { grid-column: span 2; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 9.8pt;
+    font-weight: 500;
+    color: var(--near-black);
+    line-height: 1.2;
+    margin-bottom: 3pt;
+    padding-left: 7pt;
+    border-left: 2pt solid var(--brand);
+  }
+
+  .rows { display: grid; gap: 1.2pt; }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(50pt, auto) 1fr;
+    gap: 5pt;
+    align-items: baseline;
+    padding-bottom: 1.2pt;
+    border-bottom: 0.25pt dotted var(--border-soft);
+  }
+  .row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .action {
+    color: var(--dark-warm);
+    font-size: 6.9pt;
+    line-height: 1.28;
+  }
+
+  .note {
+    color: var(--stone);
+    font-family: var(--sans);
+    font-size: 6.2pt;
+    line-height: 1.32;
+    margin-top: 3pt;
+  }
+
+  .footer {
+    margin-top: 5pt;
+    padding-top: 3pt;
+    border-top: 0.4pt dotted var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    color: var(--stone);
+    font-size: 6.8pt;
+    letter-spacing: 0.2pt;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div>
+      <div class="eyebrow">Mahaprasad's Neovim Config</div>
+      <h1>Keybinds Cheatsheet</h1>
+      <div class="subtitle">A compact reference for the bindings actually present in <span class="key">~/.config/nvim</span>.</div>
+    </div>
+    <div class="meta">
+      Leader: <span class="key">Space</span><br>
+      Localleader: <span class="key">Space</span><br>
+      Theme: Tokyo Night Storm
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="key">&lt;leader&gt;</span> means Space</div>
+    <div class="legend-item"><span class="key">C-x</span> means Ctrl + x</div>
+    <div class="legend-item"><span class="key">n</span> normal mode</div>
+    <div class="legend-item"><span class="key">i</span> insert mode</div>
+    <div class="legend-item"><span class="key">t</span> terminal mode</div>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Core</h2>
+      <div class="rows">
+        <div class="row"><span class="key">Space w</span><span class="action">Write file</span></div>
+        <div class="row"><span class="key">Space q</span><span class="action">Quit window</span></div>
+        <div class="row"><span class="key">Space Q</span><span class="action">Force close buffer</span></div>
+        <div class="row"><span class="key">Space nn</span><span class="action">Toggle line numbers</span></div>
+        <div class="row"><span class="key">Space y</span><span class="action">Copy to system clipboard</span></div>
+        <div class="row"><span class="key">Space p</span><span class="action">Paste from system clipboard</span></div>
+        <div class="row"><span class="key">Space ?</span><span class="action">Show buffer-local keymaps</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Find</h2>
+      <div class="rows">
+        <div class="row"><span class="key">Space ff</span><span class="action">Find files</span></div>
+        <div class="row"><span class="key">Space fg</span><span class="action">Live grep</span></div>
+        <div class="row"><span class="key">Space fb</span><span class="action">Open buffers</span></div>
+        <div class="row"><span class="key">Space fh</span><span class="action">Help tags</span></div>
+        <div class="row"><span class="key">C-n</span><span class="action">Reveal current file in Neo-tree</span></div>
+      </div>
+      <div class="note">The dashboard also exposes Find File and Recent Files as single-key startup actions.</div>
+    </section>
+
+    <section class="card">
+      <h2>Panes</h2>
+      <div class="rows">
+        <div class="row"><span class="key">Space sv</span><span class="action">Vertical split current file</span></div>
+        <div class="row"><span class="key">Space ss</span><span class="action">Horizontal split current file</span></div>
+        <div class="row"><span class="key">Space sf</span><span class="action">Find file in vertical split</span></div>
+        <div class="row"><span class="key">Space sF</span><span class="action">Find file in horizontal split</span></div>
+        <div class="row"><span class="key">Space se</span><span class="action">Equalize split sizes</span></div>
+        <div class="row"><span class="key">Space sx</span><span class="action">Close current split</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Move / Resize</h2>
+      <div class="rows">
+        <div class="row"><span class="key">C-h</span><span class="action">Move left</span></div>
+        <div class="row"><span class="key">C-j</span><span class="action">Move down</span></div>
+        <div class="row"><span class="key">C-k</span><span class="action">Move up</span></div>
+        <div class="row"><span class="key">C-l</span><span class="action">Move right</span></div>
+        <div class="row"><span class="key">↑ / ↓</span><span class="action">Resize height</span></div>
+        <div class="row"><span class="key">← / →</span><span class="action">Resize width</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Terminal</h2>
+      <div class="rows">
+        <div class="row"><span class="key">C-\</span><span class="action">Toggle terminal</span></div>
+        <div class="row"><span class="key">Space th</span><span class="action">Horizontal terminal</span></div>
+        <div class="row"><span class="key">Space 1</span><span class="action">Terminal 1 · server logs</span></div>
+        <div class="row"><span class="key">Space 2</span><span class="action">Terminal 2 · tests</span></div>
+        <div class="row"><span class="key">Esc</span><span class="action">Leave terminal insert mode</span></div>
+        <div class="row"><span class="key">jk</span><span class="action">Leave terminal insert mode</span></div>
+      </div>
+      <div class="note">Inside terminals, <span class="key">C-h/j/k/l</span> also moves across splits.</div>
+    </section>
+
+    <section class="card span-2">
+      <h2>LSP + Code</h2>
+      <div class="rows">
+        <div class="row"><span class="key">gd / K</span><span class="action">Definition / hover docs</span></div>
+        <div class="row"><span class="key">Space rn</span><span class="action">Rename symbol</span></div>
+        <div class="row"><span class="key">Space ca</span><span class="action">Code action</span></div>
+        <div class="row"><span class="key">Space f</span><span class="action">Format current buffer</span></div>
+        <div class="row"><span class="key">Space vs</span><span class="action">Select Python virtual environment</span></div>
+      </div>
+      <div class="note">LSP bindings appear only after a language server attaches.</div>
+    </section>
+
+    <section class="card span-2">
+      <h2>Buffers</h2>
+      <div class="rows">
+        <div class="row"><span class="key">L / H</span><span class="action">Next / previous visible buffer</span></div>
+        <div class="row"><span class="key">Space bn / bN</span><span class="action">Next / previous buffer</span></div>
+        <div class="row"><span class="key">Space bx</span><span class="action">Close current buffer</span></div>
+        <div class="row"><span class="key">Space bX</span><span class="action">Close other buffers</span></div>
+        <div class="row"><span class="key">Space bp</span><span class="action">Pin buffer</span></div>
+        <div class="row"><span class="key">Space b1-4</span><span class="action">Jump to buffer slot 1-4</span></div>
+      </div>
+      <div class="note">Bufferline shows open files across the top; panes remain your layout tool.</div>
+    </section>
+
+    <section class="card">
+      <h2>Completion</h2>
+      <div class="rows">
+        <div class="row"><span class="key">C-Space</span><span class="action">Open menu</span></div>
+        <div class="row"><span class="key">Tab / S-Tab</span><span class="action">Next / previous item</span></div>
+        <div class="row"><span class="key">Enter</span><span class="action">Confirm selected</span></div>
+        <div class="row"><span class="key">C-e</span><span class="action">Abort completion</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Git</h2>
+      <div class="rows">
+        <div class="row"><span class="key">Space gp</span><span class="action">Preview current Git hunk</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Markdown</h2>
+      <div class="rows">
+        <div class="row"><span class="key">Space um</span><span class="action">Toggle rendered Markdown</span></div>
+      </div>
+      <div class="note">Rendering is conservative: normal / command / terminal modes only, not insert mode.</div>
+    </section>
+
+    <section class="card span-2">
+      <h2>Dashboard</h2>
+      <div class="rows">
+        <div class="row"><span class="key">e / f / r</span><span class="action">New file / find file / recent files</span></div>
+        <div class="row"><span class="key">s / t</span><span class="action">Open server / test terminal</span></div>
+        <div class="row"><span class="key">c / u / q</span><span class="action">Config / update plugins / quit</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    <span>Generated from local config files in ~/.config/nvim</span>
+    <span>Tip: press <span class="key">Space</span> and wait for which-key to explore groups interactively.</span>
+  </div>
+</div>
+</body>
+</html>

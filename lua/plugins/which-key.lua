@@ -28,15 +28,16 @@ return {
       spec = {
         { "<leader>f", group = "Find (Telescope)" },
         { "<leader>g", group = "Git" },
+        { "<leader>b", group = "Buffers" },
         { "<leader>c", group = "Code Actions" },
         { "<leader>q", group = "Session / Quit" },
+        { "<leader>s", group = "Splits / Panes" },
         { "<leader>v", group = "Venv / Python" },
         { "<leader>u", group = "UI / Toggles" },
         { "<leader>1", icon = "", desc = "Server Terminal" }, -- Custom icon for your terminals
         { "<leader>2", icon = "", desc = "Test Terminal" },
         
         -- Hide certain internal mappings from the menu to keep it clean
-        { "<leader>b", hidden = true }, 
       },
     },
     keys = {
