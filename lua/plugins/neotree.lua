@@ -36,7 +36,8 @@ return {
       },
     })
 
-    -- 2. Set the keymap (Keeping your existing shortcut)
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", { desc = "Toggle Neo-tree" })
+    -- 2. Set the keymaps
+    vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", { desc = "Explorer" })
+    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", { desc = "Explorer" })
   end,
 }

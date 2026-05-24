@@ -12,6 +12,6 @@ return {
   event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   keys = {
     -- Keymap to manually pick a venv
-    { "<leader>vs", "<cmd>VenvSelect<cr>" },
+    { "<leader>V", "<cmd>VenvSelect<cr>", desc = "Select Python Venv" },
   },
 }

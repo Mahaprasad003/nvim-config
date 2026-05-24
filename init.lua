@@ -20,10 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- Toggle a horizontal terminal at the bottom using <Leader>th
-vim.keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Toggle Horizontal Terminal" })
-
-
 -- Setup lazy.nvim
 require("vim-options")
 require("lazy").setup("plugins")

@@ -94,10 +94,9 @@ return {
           local opts = { buffer = ev.buf, silent = true }
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-          -- This trigger format. Since Pyright formatting is disabled, Ruff will pick it up.
-          vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
+          vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = ev.buf, silent = true, desc = "Rename Symbol" })
+          vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = ev.buf, silent = true, desc = "Code Action" })
+          vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format({ async = true }) end, { buffer = ev.buf, silent = true, desc = "Format Buffer" })
         end,
       })
     end,

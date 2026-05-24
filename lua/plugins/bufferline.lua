@@ -7,17 +7,9 @@ return {
     keys = {
       { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
-      { "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      { "<leader>bN", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
-      { "<leader>bx", "<cmd>bdelete<cr>", desc = "Close Buffer" },
-      { "<leader>bX", "<cmd>BufferLineCloseOthers<cr>", desc = "Close Other Buffers" },
-      { "<leader>bl", "<cmd>BufferLineCloseRight<cr>", desc = "Close Buffers to Right" },
-      { "<leader>bh", "<cmd>BufferLineCloseLeft<cr>", desc = "Close Buffers to Left" },
+      { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
+      { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close Other Buffers" },
       { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin Buffer" },
-      { "<leader>b1", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Go to Buffer 1" },
-      { "<leader>b2", "<cmd>BufferLineGoToBuffer 2<cr>", desc = "Go to Buffer 2" },
-      { "<leader>b3", "<cmd>BufferLineGoToBuffer 3<cr>", desc = "Go to Buffer 3" },
-      { "<leader>b4", "<cmd>BufferLineGoToBuffer 4<cr>", desc = "Go to Buffer 4" },
     },
     opts = {
       options = {

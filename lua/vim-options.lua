@@ -1,51 +1,42 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>w", ":w<CR>")           
-vim.keymap.set("n", "<leader>q", ":q<CR>")          
-vim.keymap.set("n", "<leader>Q", ":bd!<CR>")        
-vim.keymap.set("n", "<leader>nn", ":set number!<CR>") 
--- <leader>1 opens the 1st terminal (Server logs)
-vim.keymap.set("n", "<leader>1", ":1ToggleTerm<CR>", { desc = "Terminal 1" })
--- <leader>2 opens the 2nd terminal (Testing)
-vim.keymap.set("n", "<leader>2", ":2ToggleTerm<CR>", { desc = "Terminal 2" })
+-- Core actions
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save File" })
+vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit Window" })
+vim.keymap.set("n", "<leader>Q", "<cmd>bd!<CR>", { desc = "Force Close Buffer" })
+vim.keymap.set("n", "<leader>n", "<cmd>set number! relativenumber!<CR>", { desc = "Toggle Line Numbers" })
 
--- WINDOW MANAGEMENT
--- 1. Navigation: Move between splits using Ctrl + Arrow keys (h,j,k,l)
+-- Clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to System Clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from System Clipboard" })
+
+-- Panes / splits
+vim.keymap.set("n", "<leader>v", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
+vim.keymap.set("n", "<leader>h", "<cmd>split<CR>", { desc = "Horizontal Split" })
+vim.keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close Split" })
+vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize Splits" })
+
+-- Move between panes with Ctrl + home-row keys.
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to Left Window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to Bottom Window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to Top Window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to Right Window" })
 
--- 2. Splits / panes
-vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
-vim.keymap.set("n", "<leader>ss", "<cmd>split<CR>", { desc = "Horizontal Split" })
-vim.keymap.set("n", "<leader>sf", function()
-  vim.cmd("vsplit")
-  require("telescope.builtin").find_files()
-end, { desc = "Find File in Vertical Split" })
-vim.keymap.set("n", "<leader>sF", function()
-  vim.cmd("split")
-  require("telescope.builtin").find_files()
-end, { desc = "Find File in Horizontal Split" })
-vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize Splits" })
-vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split" })
+-- Resize panes with arrows.
+vim.keymap.set("n", "<Up>", "<cmd>resize +2<CR>", { desc = "Increase Height" })
+vim.keymap.set("n", "<Down>", "<cmd>resize -2<CR>", { desc = "Decrease Height" })
+vim.keymap.set("n", "<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease Width" })
+vim.keymap.set("n", "<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase Width" })
 
--- 3. Resizing: Resize splits with Arrow keys
-vim.keymap.set("n", "<Up>", ":resize +2<CR>", { desc = "Increase Height" })
-vim.keymap.set("n", "<Down>", ":resize -2<CR>", { desc = "Decrease Height" })
-vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", { desc = "Decrease Width" })
-vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", { desc = "Increase Width" })
+-- Terminals
+vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Toggle Terminal" })
+vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Floating Terminal" })
+vim.keymap.set("n", "<leader>t1", "<cmd>1ToggleTerm<CR>", { desc = "Terminal 1" })
+vim.keymap.set("n", "<leader>t2", "<cmd>2ToggleTerm<CR>", { desc = "Terminal 2" })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-
--- Copy to system clipboard using <leader>y
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Copy to system clipboard" })
-
--- Paste from system clipboard using <leader>p
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
-
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
@@ -53,5 +44,3 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
-
-
