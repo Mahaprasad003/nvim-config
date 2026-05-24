@@ -47,7 +47,7 @@
       <h1>Workflow Cheatsheet</h1>
       <div class="subtitle">Files are buffers. Bufferline shows files. Panes are layout. Tabs are workspaces.</div>
     </div>
-    <div class="meta">Leader: <span class="key">Space</span><br>Rescue: <span class="key">Space ?</span><br>Daily loop: <span class="key">Space f</span> <span class="key">H/L</span> <span class="key">Space tt</span></div>
+    <div class="meta">Leader: <span class="key">Space</span><br>Rescue: <span class="key">Space ?</span><br>Daily loop: <span class="key">Space f</span> <span class="key">H/L</span> <span class="key">Space c</span></div>
   </div>
   <div class="rule"></div>
 
@@ -57,9 +57,9 @@
       <div class="rows">
         <div class="row"><span class="key">Space f</span><span class="action">Find file on disk</span></div>
         <div class="row"><span class="key">Space b</span><span class="action">Find open file</span></div>
+        <div class="row"><span class="key">Space c</span><span class="action">Close current file</span></div>
         <div class="row"><span class="key">H / L</span><span class="action">Prev / next open file</span></div>
         <div class="row"><span class="key">Space /</span><span class="action">Search text in project</span></div>
-        <div class="row"><span class="key">Space e</span><span class="action">Explorer</span></div>
         <div class="row"><span class="key">Space ?</span><span class="action">Find keymaps</span></div>
       </div>
     </section>
@@ -118,7 +118,7 @@
         <div class="flow-row"><div class="goal">Nearby open file</div><div class="steps"><span class="key">H/L</span> until it appears in current pane</div></div>
         <div class="flow-row"><div class="goal">Far open file</div><div class="steps"><span class="key">Space b</span> -> type part of filename -> <span class="key">Enter</span></div></div>
         <div class="flow-row"><div class="goal">Prune open files</div><div class="steps"><span class="key">Space b</span> -> highlight file -> <span class="key">Alt-d</span>; repeat, then <span class="key">Esc</span></div></div>
-        <div class="flow-row"><div class="goal">Close current file</div><div class="steps"><span class="key">Space bd</span> closes the buffer; use <span class="key">Space x</span> only to close the pane</div></div>
+        <div class="flow-row"><div class="goal">Close current file</div><div class="steps"><span class="key">Space c</span> closes the buffer; use <span class="key">Space x</span> only to close the pane</div></div>
         <div class="flow-row"><div class="goal">Keep important file</div><div class="steps"><span class="key">Space bp</span> pin it -> <span class="key">Space bo</span> close other buffers</div></div>
       </div>
     </section>
@@ -158,14 +158,14 @@
       <div class="flow">
         <div class="flow-row"><div class="goal">Lost in mappings</div><div class="steps"><span class="key">Space ?</span> search keymaps; press <span class="key">Space</span> and pause for which-key</div></div>
         <div class="flow-row"><div class="goal">Wrong mode</div><div class="steps"><span class="key">Esc</span> first, then leader mapping like <span class="key">Space v</span> or <span class="key">Space f</span></div></div>
-        <div class="flow-row"><div class="goal">Layout too messy</div><div class="steps"><span class="key">Space =</span> equalize panes; <span class="key">Space x</span> close extra pane; <span class="key">Space bo</span> prune files</div></div>
+        <div class="flow-row"><div class="goal">Layout too messy</div><div class="steps"><span class="key">Space =</span> equalize panes; <span class="key">Space x</span> close pane; <span class="key">Space c</span> close file</div></div>
         <div class="flow-row"><div class="goal">Save / quit / clipboard</div><div class="steps"><span class="key">Space w</span> save; <span class="key">Space q</span> quit; <span class="key">Space y/p</span> clipboard</div></div>
       </div>
     </section>
   </div>
 
   <div class="footer">
-    <span>Rule: Space f opens files from disk; Space b switches already-open files; Ctrl-v/Ctrl-x inside Telescope opens splits.</span>
+    <span>Rule: Space f opens from disk; Space b switches open files; Space c closes the current file; Space x closes the pane.</span>
     <span>Generated from ~/.config/nvim</span>
   </div>
 </body>

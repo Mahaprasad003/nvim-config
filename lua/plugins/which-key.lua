@@ -19,6 +19,7 @@ return {
       },
       spec = {
         { "<leader>b", desc = "Find Buffers" },
+        { "<leader>c", desc = "Close Current File" },
         { "<leader>e", desc = "Explorer" },
         { "<leader>f", desc = "Find Files" },
         { "<leader>/", desc = "Search Text" },

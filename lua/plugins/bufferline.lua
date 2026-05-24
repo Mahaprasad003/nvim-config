@@ -7,6 +7,7 @@ return {
     keys = {
       { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
+      { "<leader>c", "<cmd>bdelete<cr>", desc = "Close Current File" },
       { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
       { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close Other Buffers" },
       { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin Buffer" },
