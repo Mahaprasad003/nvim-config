@@ -31,6 +31,7 @@ return {
         { "<leader>c", group = "Code Actions" },
         { "<leader>q", group = "Session / Quit" },
         { "<leader>v", group = "Venv / Python" },
+        { "<leader>u", group = "UI / Toggles" },
         { "<leader>1", icon = "", desc = "Server Terminal" }, -- Custom icon for your terminals
         { "<leader>2", icon = "", desc = "Test Terminal" },
         
