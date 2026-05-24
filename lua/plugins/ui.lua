@@ -9,11 +9,22 @@ return {
     config = function()
       require("noice").setup({
         lsp = {
+          -- Pyright emits progress on incremental edits; showing that in the
+          -- bottom-right mini view is noisy while typing LeetCode solutions.
+          progress = {
+            enabled = false,
+          },
           -- override markdown rendering so that **cmp** and other plugins use Treesitter
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
+          },
+          signature = {
+            enabled = false,
+          },
+          hover = {
+            enabled = false,
           },
         },
         -- you can enable a preset for easier configuration
